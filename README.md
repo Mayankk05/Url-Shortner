@@ -68,31 +68,5 @@ MySQL
 
 Redis
 
-Backend Setup
-Clone the repository:
-
-Bash
-
-git clone https://github.com/your-username/Url-Shortner.git
-cd Url-Shortner/UrlShortener
-Configure the application:
-Open src/main/resources/application.properties and update the following properties with your local database and Redis configurations:
-
-Properties
-
-spring.datasource.url=jdbc:mysql://localhost:3306/urlshortener?useSSL=false&serverTimezone=UTC&createDatabaseIfNotExist=true
-spring.datasource.username=root
-spring.datasource.password=your_database_password
-
-spring.redis.host=localhost
-spring.redis.port=6379
-spring.redis.password=your_redis_password
-
-spring.mail.username=your_email@gmail.com
-spring.mail.password=your_email_password
-Run the application:
-
-Bash
-
 mvn spring-boot:run
 The backend will be running on http://localhost:8080.
