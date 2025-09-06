@@ -9,10 +9,6 @@ User Authentication: Secure user registration and login with JWT authentication.
 
 Dashboard: An overview of your URL statistics, including total URLs, total clicks, and top-performing links.
 
-Detailed Analytics: For each shortened URL, you can view:
-
-Click-through rates over time (last 7, 30, 90, or 365 days).
-
 Geographic distribution of clicks.
 
 Device and browser breakdowns.
