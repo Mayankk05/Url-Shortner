@@ -1,10 +1,7 @@
 import React from 'react';
 
-/**
- * Loading spinner component for async operations
- */
 const LoadingSpinner = ({ size = 'md', className = '' }) => {
-  // Define sizes using inline styles instead of Tailwind classes
+  
   const sizeValues = {
     sm: '1rem',
     md: '2rem',
