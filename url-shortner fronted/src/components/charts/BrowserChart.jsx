@@ -19,10 +19,7 @@ ChartJS.register(
   Legend
 );
 
-/**
- * Browser distribution bar chart
- * Shows which browsers users are using to access links
- */
+
 const BrowserChart = ({ data, height = 300 }) => {
   if (!data || data.length === 0) {
     return (
