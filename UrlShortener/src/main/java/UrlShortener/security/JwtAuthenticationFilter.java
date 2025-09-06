@@ -30,8 +30,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                                     FilterChain filterChain) throws ServletException, IOException {
         try {
             String jwt = getJwtFromRequest(request);
-
-            // FIXED: Add debugging for JWT token
             System.out.println("=== JWT DEBUG ===");
             System.out.println("Request URL: " + request.getRequestURL());
             System.out.println("Authorization Header: " + request.getHeader("Authorization"));
@@ -63,11 +61,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String bearerToken = request.getHeader("Authorization");
         if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
             String token = bearerToken.substring(7);
-
-            // FIXED: Clean the token of any extra characters
             token = token.trim();
-
-            // Remove any potential newlines or carriage returns
             token = token.replaceAll("[\n\r]", "");
 
             return token;
