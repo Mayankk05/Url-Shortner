@@ -25,8 +25,6 @@ public class AnalyticsService {
 
     @Autowired
     private UrlRepository urlRepository;
-
-    // FIXED: Remove @Cacheable to avoid casting issues
     public AnalyticsResponse getUrlAnalytics(String shortCode, int days) {
         Url url = urlRepository.findByShortCode(shortCode)
                 .orElseThrow(() -> new RuntimeException("URL not found: " + shortCode));
