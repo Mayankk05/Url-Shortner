@@ -28,7 +28,6 @@ public class AnalyticsController {
                                              @RequestParam(defaultValue = "30") int days,
                                              Authentication authentication) {
         try {
-            // FIXED: Check authentication properly
             if (authentication == null || !authentication.isAuthenticated()) {
                 Map<String, Object> errorResponse = new HashMap<>();
                 errorResponse.put("success", false);
@@ -36,10 +35,8 @@ public class AnalyticsController {
                 return ResponseEntity.status(401).body(errorResponse);
             }
 
-            // Get analytics data without casting issues
             AnalyticsResponse analytics = analyticsService.getUrlAnalytics(shortCode, days);
 
-            // FIXED: Create response structure manually to avoid casting issues
             Map<String, Object> response = new HashMap<>();
             response.put("success", true);
             response.put("data", analytics);
