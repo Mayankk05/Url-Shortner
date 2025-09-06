@@ -1,9 +1,7 @@
 import React from 'react';
 import { clsx } from 'clsx';
 
-/**
- * Reusable button component with consistent styling
- */
+
 const Button = ({
   children,
   variant = 'primary',
