@@ -32,12 +32,7 @@ export const useApi = (apiFunction, dependencies = []) => {
   return { data, loading, error, refetch };
 };
 
-// src/hooks/useDebounce.js
 import { useState, useEffect } from 'react';
-
-/**
- * Debounce hook for search inputs and API calls
- */
 export const useDebounce = (value, delay) => {
   const [debouncedValue, setDebouncedValue] = useState(value);
 
