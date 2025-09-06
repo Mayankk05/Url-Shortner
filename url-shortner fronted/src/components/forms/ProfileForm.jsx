@@ -24,8 +24,6 @@ const ProfileForm = ({ user }) => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    
-    // Clear error when user starts typing
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: null }));
     }
@@ -38,7 +36,6 @@ const ProfileForm = ({ user }) => {
     newErrors.lastName = validators.required(formData.lastName, 'Last name');
     newErrors.email = validators.email(formData.email);
 
-    // Remove null errors
     Object.keys(newErrors).forEach(key => {
       if (newErrors[key] === null) {
         delete newErrors[key];
@@ -58,10 +55,6 @@ const ProfileForm = ({ user }) => {
 
     setLoading(true);
     try {
-      // TODO: Implement profile update API call
-      // const result = await UserService.updateProfile(formData);
-      
-      // For now, just update local state
       updateUser(formData);
       success('Profile updated successfully!');
     } catch (err) {
