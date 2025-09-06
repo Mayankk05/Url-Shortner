@@ -98,15 +98,11 @@ public class UrlService {
         return urlRepository.countActiveUrlsByUser(user);
     }
 
-    // FIXED: Proper caching with lazy loading initialization
     @Cacheable(value = "urls", key = "#shortCode")
     public Url findByShortCode(String shortCode) {
         Url url = urlRepository.findByShortCode(shortCode)
                 .orElseThrow(() -> new ResourceNotFoundException("URL not found: " + shortCode));
-
-        // Initialize lazy-loaded relationships to avoid proxy serialization issues
         if (url.getUser() != null) {
-            // Force initialization of the User proxy
             url.getUser().getId();
             url.getUser().getEmail();
             url.getUser().getFirstName();
@@ -154,7 +150,6 @@ public class UrlService {
                 }
                 break;
             case ENTERPRISE:
-                // No limits for enterprise
                 break;
         }
     }
