@@ -46,11 +46,7 @@ public class JwtUtil {
                 System.err.println("Token is null or empty");
                 return false;
             }
-
-            // FIXED: Better token format validation
             token = token.trim();
-
-            // Check if token has proper JWT format
             String[] parts = token.split("\\.");
             System.out.println("JWT parts count: " + parts.length);
 
