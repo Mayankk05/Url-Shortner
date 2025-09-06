@@ -20,8 +20,6 @@ public interface UrlRepository extends JpaRepository<Url, Long> {
     boolean existsByShortCode(String shortCode);
 
     Page<Url> findByUserAndIsActiveOrderByCreatedAtDesc(User user, Boolean isActive, Pageable pageable);
-
-    // FIXED: Correct LIKE syntax in JPQL
     @Query("SELECT u FROM Url u WHERE u.user = :user AND u.isActive = true AND " +
             "(LOWER(u.title) LIKE LOWER(CONCAT('%', :search, '%')) OR " +
             "LOWER(u.originalUrl) LIKE LOWER(CONCAT('%', :search, '%')))")
