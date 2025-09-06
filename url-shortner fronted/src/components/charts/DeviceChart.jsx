@@ -9,10 +9,7 @@ import { Pie } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-/**
- * Device breakdown pie chart
- * Shows distribution of desktop, mobile, tablet clicks
- */
+
 const DeviceChart = ({ data, height = 300 }) => {
   if (!data || data.length === 0) {
     return (
