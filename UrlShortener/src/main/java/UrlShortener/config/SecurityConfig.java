@@ -57,37 +57,18 @@ public class SecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeHttpRequests(authz -> authz
-                        // Public endpoints - ORDER MATTERS (most specific first)
-
-                        // API endpoints (must come before /** patterns)
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/api/debug/**").permitAll()
-
-                        // System endpoints
                         .requestMatchers("/", "/health", "/home", "/error").permitAll()
-
-                        // Preview endpoints (more specific first)
                         .requestMatchers("/preview/**").permitAll()
-
-                        // Debug endpoints
                         .requestMatchers("/debug/**").permitAll()
-
-                        // Static resources
                         .requestMatchers("/static/**", "/css/**", "/js/**", "/images/**", "/favicon.ico").permitAll()
-
-                        // Actuator
                         .requestMatchers("/actuator/**").permitAll()
-
-                        // FIXED: Short URL patterns using AntPathMatcher style
-                        .requestMatchers("/??????").permitAll()    // 6 character codes
-                        .requestMatchers("/???????").permitAll()   // 7 character codes
-                        .requestMatchers("/????????").permitAll()  // 8 character codes
-
-                        // Protected endpoints (must come after public patterns)
+                        .requestMatchers("/??????").permitAll()    
+                        .requestMatchers("/???????").permitAll()   
+                        .requestMatchers("/????????").permitAll() 
                         .requestMatchers("/api/analytics/**").authenticated()
                         .requestMatchers("/api/urls/**").authenticated()
-
-                        // Everything else requires authentication
                         .anyRequest().authenticated()
                 );
 
