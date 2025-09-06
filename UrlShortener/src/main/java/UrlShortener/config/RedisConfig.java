@@ -41,17 +41,12 @@ public class RedisConfig {
         }
         return new LettuceConnectionFactory(config);
     }
-
-    // FIXED: Create ObjectMapper with Hibernate and JavaTime modules
     @Bean
     public ObjectMapper redisObjectMapper() {
         ObjectMapper mapper = new ObjectMapper();
-
-        // Handle Java 8 time types
         mapper.registerModule(new JavaTimeModule());
         mapper.disable(com.fasterxml.jackson.databind.SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
 
-        // FIXED: Handle Hibernate proxies
         Hibernate6Module hibernateModule = new Hibernate6Module();
         hibernateModule.disable(Hibernate6Module.Feature.USE_TRANSIENT_ANNOTATION);
         hibernateModule.enable(Hibernate6Module.Feature.FORCE_LAZY_LOADING);
