@@ -73,7 +73,6 @@ export const useAuth = () => {
       await AuthService.logout();
       setUser(null);
     } catch (error) {
-      // Logout should always succeed locally
       console.warn('Logout error:', error);
       setUser(null);
     } finally {
